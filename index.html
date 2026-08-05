@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منطقيا — تعلم المنطق والمغالطات</title>
+    <meta name="description" content="منصة تعليمية تفاعلية لتعلم الاستدلال المنطقي وكشف المغالطات بمساعدة الذكاء الاصطناعي">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@300;400;500;600;700;800;900&family=Cairo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://js.puter.com/v2/"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Particle Background -->
+<div id="particles-bg"></div>
+
+<!-- Navigation -->
+<nav class="navbar" id="navbar">
+    <div class="nav-container">
+        <div class="nav-logo">
+            <div class="logo-icon">
+                <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                    <circle cx="14" cy="14" r="13" stroke="url(#lg1)" stroke-width="2"/>
+                    <path d="M8 14l4 4 8-8" stroke="url(#lg2)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <defs>
+                        <linearGradient id="lg1" x1="0" y1="0" x2="28" y2="28">
+                            <stop offset="0%" stop-color="#818cf8"/>
+                            <stop offset="100%" stop-color="#c084fc"/>
+                        </linearGradient>
+                        <linearGradient id="lg2" x1="0" y1="0" x2="28" y2="28">
+                            <stop offset="0%" stop-color="#818cf8"/>
+                            <stop offset="100%" stop-color="#c084fc"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </div>
+            <span class="logo-text">منطقيا</span>
+        </div>
+        <div class="nav-links">
+            <a href="#section-learn" class="nav-link active" id="nav-learn">التعلم</a>
+            <a href="#section-quiz" class="nav-link" id="nav-quiz">الاختبار</a>
+            <a href="#section-analyzer" class="nav-link" id="nav-analyzer">مسبار الحجج</a>
+        </div>
+        <div class="nav-score-badge" id="nav-score">
+            <span class="score-icon">⭐</span>
+            <span id="score-display">0 نقطة</span>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero" id="hero">
+    <div class="hero-content">
+        <div class="hero-badge">
+            <span class="badge-dot"></span>
+            مدعوم بالذكاء الاصطناعي
+        </div>
+        <h1 class="hero-title">
+            تعلّم فن
+            <span class="gradient-text">التفكير المنطقي</span>
+        </h1>
+        <p class="hero-subtitle">
+            اكتشف المغالطات المنطقية، أتقن أساليب الاستدلال، واختبر قدراتك مع مسبار الحجج الذكي
+        </p>
+        <div class="hero-stats">
+            <div class="stat-item">
+                <span class="stat-num">٢٠+</span>
+                <span class="stat-label">مغالطة منطقية</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+                <span class="stat-num">٥٠+</span>
+                <span class="stat-label">سؤال تفاعلي</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+                <span class="stat-num">AI</span>
+                <span class="stat-label">تحليل فوري</span>
+            </div>
+        </div>
+        <div class="hero-cta">
+            <button class="btn-primary" onclick="scrollToSection('section-learn')">ابدأ التعلم</button>
+            <button class="btn-secondary" onclick="scrollToSection('section-analyzer')">جرّب المسبار</button>
+        </div>
+    </div>
+    <div class="hero-visual">
+        <div class="floating-cards">
+            <div class="float-card card-1">
+                <div class="fc-icon">🎭</div>
+                <div class="fc-label">مغالطة التجريد</div>
+            </div>
+            <div class="float-card card-2">
+                <div class="fc-icon">⚡</div>
+                <div class="fc-label">الاستدلال الاستنتاجي</div>
+            </div>
+            <div class="float-card card-3">
+                <div class="fc-icon">🔍</div>
+                <div class="fc-label">تحليل الحجج</div>
+            </div>
+            <div class="float-card card-4">
+                <div class="fc-icon">🧠</div>
+                <div class="fc-label">التفكير النقدي</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Learn Section -->
+<section class="section" id="section-learn">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-badge">📚 التعلم</div>
+            <h2 class="section-title">المغالطات المنطقية والاستدلالات</h2>
+            <p class="section-subtitle">تعرف على أشهر المغالطات المنطقية وكيفية اكتشافها في الحياة اليومية</p>
+        </div>
+
+        <div class="categories-tabs">
+            <button class="tab-btn active" data-category="fallacies" onclick="switchCategory('fallacies', this)">المغالطات المنطقية</button>
+            <button class="tab-btn" data-category="reasoning" onclick="switchCategory('reasoning', this)">أنواع الاستدلال</button>
+        </div>
+
+        <div class="cards-grid" id="learn-grid">
+            <!-- Cards inserted by JS -->
+        </div>
+    </div>
+</section>
+
+<!-- Modal for detailed card view -->
+<div class="modal-overlay" id="modal-overlay" onclick="closeModal()">
+    <div class="modal-card" onclick="event.stopPropagation()">
+        <button class="modal-close" onclick="closeModal()">✕</button>
+        <div class="modal-icon" id="modal-icon"></div>
+        <h3 class="modal-title" id="modal-title"></h3>
+        <div class="modal-badge" id="modal-badge"></div>
+        <p class="modal-definition" id="modal-definition"></p>
+        <div class="modal-example-box">
+            <div class="example-label">مثال تطبيقي</div>
+            <p id="modal-example"></p>
+        </div>
+        <div class="modal-tip-box" id="modal-tip-box">
+            <div class="tip-label">💡 كيف تكتشفها؟</div>
+            <p id="modal-tip"></p>
+        </div>
+        <button class="btn-primary btn-small" onclick="closeModal()">فهمت، أغلق</button>
+    </div>
+</div>
+
+<!-- Quiz Section -->
+<section class="section section-alt" id="section-quiz">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-badge">🎯 الاختبار</div>
+            <h2 class="section-title">اختبر معلوماتك</h2>
+            <p class="section-subtitle">هل تستطيع التعرف على المغالطات؟ ضع نفسك في الاختبار الآن</p>
+        </div>
+
+        <div class="quiz-container" id="quiz-container">
+            <div class="quiz-start-screen" id="quiz-start">
+                <div class="quiz-start-icon">🧩</div>
+                <h3>مستعد للاختبار؟</h3>
+                <p>سيُقدَّم لك ١٠ أسئلة تدريجية الصعوبة. حاول الحصول على أعلى نقاط!</p>
+                <div class="difficulty-select">
+                    <span>مستوى الصعوبة:</span>
+                    <div class="diff-btns">
+                        <button class="diff-btn active" id="diff-easy" onclick="setDifficulty('easy', this)">سهل</button>
+                        <button class="diff-btn" id="diff-medium" onclick="setDifficulty('medium', this)">متوسط</button>
+                        <button class="diff-btn" id="diff-hard" onclick="setDifficulty('hard', this)">صعب</button>
+                    </div>
+                </div>
+                <button class="btn-primary" onclick="startQuiz()">ابدأ الاختبار 🚀</button>
+            </div>
+
+            <div class="quiz-game-screen" id="quiz-game" style="display:none">
+                <div class="quiz-header">
+                    <div class="quiz-progress-info">
+                        <span id="q-current">سؤال 1</span>
+                        <span id="q-total">من 10</span>
+                    </div>
+                    <div class="quiz-score-info">
+                        <span>النقاط: </span>
+                        <span id="q-score">0</span>
+                    </div>
+                </div>
+                <div class="quiz-progress-bar">
+                    <div class="quiz-progress-fill" id="quiz-progress-fill"></div>
+                </div>
+                <div class="quiz-timer-bar">
+                    <div class="timer-fill" id="timer-fill"></div>
+                </div>
+                <div class="quiz-question-card">
+                    <div class="question-category" id="q-category"></div>
+                    <p class="question-text" id="q-text"></p>
+                </div>
+                <div class="quiz-options" id="quiz-options">
+                    <!-- Options rendered by JS -->
+                </div>
+                <div class="quiz-feedback" id="quiz-feedback" style="display:none"></div>
+                <button class="btn-primary btn-next" id="btn-next" onclick="nextQuestion()" style="display:none">التالي ←</button>
+            </div>
+
+            <div class="quiz-result-screen" id="quiz-result" style="display:none">
+                <div class="result-animation" id="result-animation"></div>
+                <h3 id="result-title"></h3>
+                <p id="result-subtitle"></p>
+                <div class="result-score-circle">
+                    <div class="score-circle-inner">
+                        <span id="result-score-num"></span>
+                        <span class="score-circle-label">من 100</span>
+                    </div>
+                </div>
+                <div class="result-stats">
+                    <div class="rstat">
+                        <span class="rstat-icon">✅</span>
+                        <span id="rstat-correct">0 صحيح</span>
+                    </div>
+                    <div class="rstat">
+                        <span class="rstat-icon">❌</span>
+                        <span id="rstat-wrong">0 خطأ</span>
+                    </div>
+                    <div class="rstat">
+                        <span class="rstat-icon">⏱️</span>
+                        <span id="rstat-time">0 ثانية</span>
+                    </div>
+                </div>
+                <div class="result-actions">
+                    <button class="btn-primary" onclick="restartQuiz()">أعد الاختبار</button>
+                    <button class="btn-secondary" onclick="scrollToSection('section-learn')">راجع الدروس</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- AI Argument Analyzer Section -->
+<section class="section" id="section-analyzer">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-badge">🤖 الذكاء الاصطناعي</div>
+            <h2 class="section-title">مسبار الحجج</h2>
+            <p class="section-subtitle">أدخل أي نص أو حجة ليعطيك الذكاء الاصطناعي اسم المغالطة وشرحها ومثالاً عليها ورداً مقترحاً</p>
+        </div>
+
+        <div class="analyzer-container">
+            <div class="analyzer-panel">
+                <div class="analyzer-input-area">
+                    <div class="input-label">
+                        <span class="input-label-icon">✏️</span>
+                        أدخل الحجة أو النص المراد تحليله
+                    </div>
+                    <textarea 
+                        id="argument-input" 
+                        class="argument-textarea"
+                        placeholder="مثال: 'كل من يعارض هذا القانون يريد الفوضى في البلاد، لذلك يجب أن تصوت له أنت أيضاً'"
+                        rows="5"
+                    ></textarea>
+                    <div class="analyzer-options">
+                        <div class="analysis-depth">
+                            <span>عمق التحليل:</span>
+                            <select id="analysis-depth" class="depth-select">
+                                <option value="basic">أساسي</option>
+                                <option value="detailed" selected>تفصيلي</option>
+                                <option value="expert">خبير</option>
+                            </select>
+                        </div>
+                        <div class="analysis-depth">
+                            <span>النموذج:</span>
+                            <select id="ai-model" class="depth-select">
+                                <option value="gpt-4o" selected>GPT&#x2011;5.6 Sol ✨</option>
+                                <option value="gpt-4o-mini">GPT&#x2011;4o Mini</option>
+                                <option value="claude-3-5-sonnet">Claude Sonnet</option>
+                                <option value="gemini-1.5-flash">Gemini Flash</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="example-btns-row">
+                        <span>أمثلة جاهزة:</span>
+                        <button class="example-pill" onclick="loadExample(0)">مغالطة الشخصنة</button>
+                        <button class="example-pill" onclick="loadExample(1)">مغالطة العموم</button>
+                        <button class="example-pill" onclick="loadExample(2)">مغالطة الزيف</button>
+                    </div>
+                    <div class="counter-example-toggle">
+                        <label class="toggle-switch" id="counter-toggle-label">
+                            <input type="checkbox" id="show-counter-example" checked>
+                            <span class="toggle-slider"></span>
+                        </label>
+                        <span class="toggle-label-text">💡 أضف مثالاً على الرد الصحيح (كيف يكون المهاجم مخطئاً)</span>
+                    </div>
+                    <button class="btn-analyze" id="analyze-btn" onclick="analyzeArgument()">
+                        <span class="analyze-btn-icon">🔬</span>
+                        تحليل بالذكاء الاصطناعي
+                    </button>
+                </div>
+            </div>
+
+            <div class="analyzer-result" id="analyzer-result">
+                <div class="result-placeholder" id="result-placeholder">
+                    <div class="placeholder-icon">🔭</div>
+                    <p>سيظهر اسم المغالطة وشرحها والرد المقترح هنا</p>
+                    <p class="placeholder-sub">أدخل كلام الطرف الآخر واضغط تحليل للبدء</p>
+                    <div class="model-badge-display">يعمل بـ <span id="current-model-label">GPT‑5.6 Sol ✨</span></div>
+                </div>
+                <div class="ai-response" id="ai-response" style="display:none">
+                    <div class="ai-response-body" id="ai-response-body"></div>
+                </div>
+            </div>
+
+            <div class="analyzer-history" id="analyzer-history" style="display:none">
+                <h4 class="history-title">📋 سجل التحليلات</h4>
+                <div class="history-list" id="history-list"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-logo">
+            <span class="logo-text">منطقيا</span>
+        </div>
+        <p class="footer-text">منصة تعليمية مدعومة بـ Puter.js AI لتعلم التفكير النقدي والمنطقي</p>
+        <div class="footer-links">
+            <a href="#section-learn">التعلم</a>
+            <a href="#section-quiz">الاختبار</a>
+            <a href="#section-analyzer">المسبار</a>
+        </div>
+    </div>
+</footer>
+
+<!-- Toast Notifications -->
+<div class="toast-container" id="toast-container"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
