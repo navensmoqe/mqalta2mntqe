@@ -1,0 +1,26 @@
+{
+  "name": "منطقياً | تعلم المغالطات واستدلال الحجج",
+  "short_name": "منطقياً",
+  "description": "منصة تفاعلية لتعلم المغالطات المنطقية واستدلال الحجج مع مسبار بالذكاء الاصطناعي",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#818cf8",
+  "orientation": "portrait-primary",
+  "dir": "rtl",
+  "lang": "ar",
+  "icons": [
+    {
+      "src": "icon-192.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-512.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    }
+  ]
+}

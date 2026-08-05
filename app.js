@@ -1244,6 +1244,53 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+// ── Service Worker & PWA Install Logic ───────────────────
+let deferredPrompt = null;
+
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js')
+            .then((reg) => console.log('Service Worker Registered:', reg.scope))
+            .catch((err) => console.log('Service Worker Registration Failed:', err));
+    });
+}
+
+window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    const installBtn = document.getElementById('pwa-install-btn');
+    if (installBtn) {
+        installBtn.style.display = 'inline-flex';
+    }
+});
+
+async function installPWA() {
+    if (deferredPrompt) {
+        deferredPrompt.prompt();
+        const { outcome } = await deferredPrompt.userChoice;
+        console.log(`User choice: ${outcome}`);
+        if (outcome === 'accepted') {
+            const installBtn = document.getElementById('pwa-install-btn');
+            if (installBtn) installBtn.style.display = 'none';
+            showToast('تمت إضافة التطبيق إلى الشاشة الرئيسية! 📲', 'success');
+        }
+        deferredPrompt = null;
+    } else {
+        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+        if (isIOS) {
+            showToast('لتثبيت التطبيق على آيفون: اضغط زر المشاركة (Share) ثم "إضافة إلى الشاشة الرئيسية" 📲', 'info');
+        } else {
+            showToast('اضغط خيارات المتصفح (⋮) ثم اختر "تثبيت التطبيق" أو "إضافة إلى الشاشة الرئيسية" 📲', 'info');
+        }
+    }
+}
+
+window.addEventListener('appinstalled', () => {
+    const installBtn = document.getElementById('pwa-install-btn');
+    if (installBtn) installBtn.style.display = 'none';
+    showToast('شكراً لتثبيت تطبيق منطقياً! 🎉', 'success');
+});
+
 // ── Toast Notifications ────────────────────────────
 function showToast(message, type = 'info') {
     const container = document.getElementById('toast-container');
@@ -1257,5 +1304,6 @@ function showToast(message, type = 'info') {
         toast.style.transform = 'translateX(-20px)';
         toast.style.transition = 'all 0.3s ease';
         setTimeout(() => toast.remove(), 300);
-    }, 3500);
+    }, 4500);
 }
+

@@ -8,6 +8,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@300;400;500;600;700;800;900&family=Cairo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- PWA Settings -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#818cf8">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="منطقياً">
+    <link rel="apple-touch-icon" href="icon-192.jpg">
     <script src="https://js.puter.com/v2/"></script>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -43,9 +51,14 @@
             <a href="#section-quiz" class="nav-link" id="nav-quiz">الاختبار</a>
             <a href="#section-analyzer" class="nav-link" id="nav-analyzer">مسبار الحجج</a>
         </div>
-        <div class="nav-score-badge" id="nav-score">
-            <span class="score-icon">⭐</span>
-            <span id="score-display">0 نقطة</span>
+        <div class="nav-actions">
+            <button id="pwa-install-btn" class="pwa-install-btn" style="display:none;" onclick="installPWA()">
+                <span>📲</span> تثبيت التطبيق
+            </button>
+            <div class="nav-score-badge" id="nav-score">
+                <span class="score-icon">⭐</span>
+                <span id="score-display">0 نقطة</span>
+            </div>
         </div>
     </div>
 </nav>
